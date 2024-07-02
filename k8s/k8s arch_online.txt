@@ -1,0 +1,56 @@
+Components on the Kubernetes Worker Node:
+1) Kubelet:
+
+Function: An agent that runs on each node in the cluster.
+Description: Kubelet is responsible for ensuring containers are running in a pod. 
+It receives pod definitions via the API server and ensures the containers described in those pods are healthy and running.
+
+
+2) Container Runtime:
+
+Function: Software responsible for running containers.
+Description: Kubernetes supports multiple container runtimes, including Docker, containerd, and others.
+The container runtime is responsible for pulling container images from a registry, running the containers, and 
+providing an interface to interact with them.
+
+
+
+
+3) Kube-proxy:
+
+Function: Network proxy that runs on each node.
+Description: Kube-proxy maintains network rules on nodes. These network rules allow network communication to your Pods 
+from network sessions inside or outside of your cluster. Kube-proxy also performs connection forwarding.
+
+
+
+
+
+
+Components on the Kubernetes Master Plane:
+1) API Server:
+
+Function: Acts as the front-end for the Kubernetes control plane.
+Description: The API server validates and configures data for the API objects, which include pods, services, replication controllers
+and others. It handles API calls from kubectl, UIs, and other parts of Kubernetes.
+
+
+2)Scheduler:
+
+Function: Assigns pods to nodes.
+Description: The scheduler is responsible for determining which nodes pods should run on based on resource availability,
+policies, and constraints. It takes into account factors such as CPU and memory requirements, data locality, and anti-affinity specifications.
+
+
+3) Controller Manager:
+
+Function: Runs controllers that regulate the state of the cluster.
+Description: The controller manager is a daemon that embeds the core control loops shipped with Kubernetes. 
+These control loops watch the shared state of the cluster through the API server and work to ensure that the cluster state matches the user's desired state.
+Examples of controllers include node controller, replication controller, endpoints controller, and service account controller.
+
+4) etcd:
+
+Function: Consistent and highly-available key-value store.
+Description: etcd is used as Kubernetes' backing store for all cluster data. This includes configuration details, state information, and metadata about all Kubernetes objects.
+It is crucial for maintaining cluster state and performing leader election.

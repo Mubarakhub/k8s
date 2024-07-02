@@ -1,0 +1,77 @@
+K8s arch
+
+there are 2 types of control plane and data plane
+
+control plane component
+API server
+etcd
+scheduler
+controler manager
+clond controler manager (CCM)
+
+data plane
+kubelet 
+kube proxy
+container runtime
+
+
+
+
+DATA PLANE
+
+this are the 3 component is available on the worker nodes of k8s
+
+
+1)container runtime
+
+container runtime is responsible to run the container inside the pods, k8s is support dockerstim,continerd,kubelet and CRI-O. there are multiple continer runtime interface, but in docker it only support dockerstim.
+
+#in docker, container runtime is dockerstim this is responsible for running the container in docker.docker only support dockerstim.
+#in k8s, container runtime this is responsible for running the pod on kubernetes.but k8s is support dockerstim,continerd,kubelet and CRI-O. there are multiple continer runtime interface.
+
+2)Kubelet
+
+what is the role of Kubelet? ... is responsible for pod create and check the status weather is running properly or not. if any issue found by kubelet it will inform to some component to restart the pod (that component name suspence).
+
+3)networing (kube-proxy)
+
+in docker, networking is by default is docker0 this is bridge network for contianer simillerly
+in k8s there is a componet is called kubeproxy and it is also work like a load balancer if we do repilcas of pod's
+
+
+
+CONTROL PLANE
+
+
+
+API server 
+
+it only decide the information of nodes., which node have availabilty.
+
+
+the heart of k8s is th k8s API server which basiclly take all teh request form exteral world e.g the user is tryig to create teb pod he tries to access the API server a
+it decide the information API sever
+ it check the avaialbility of node,
+to schedule a component on available node there is a componet htat is sheduler
+
+
+what is responsible of scheduler?
+
+schedulet is basiclly responsible for scheduleing your pod or scheduling your resources on k8s
+
+etcd
+
+etcd is basiclly act as a backup service or acting as a backuping store of entire  culster information 
+is basiclly a key value store and the entire k8s culster information is stored as a object are key value pair inside this etcd
+
+
+controller manager
+
+there are many types of controller for example repilecas
+to manage the controller is controlby controller manager
+
+
+cloud controller manager (CCM)
+ is only reqired in Cloud platform for example AWS,GCP
+this is not required in on primisis
+ 
